@@ -4,6 +4,7 @@ import bolts from "../../../Assets/Images/bolts-nuts.jpg";
 const Tools = () => {
     return (
       <div className='container mx-auto flex justify-center'>
+          <h1> Tools </h1>
         <div className='grid lg:grid-cols-3 grid-cols-1 gap-16'>
           <div class='card lg:w-96 w-80 bg-base-300 shadow-xl'>
             <figure>
