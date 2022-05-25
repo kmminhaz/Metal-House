@@ -39,7 +39,7 @@ const NavBar = () => {
             {navItems}
           </ul>
         </div>
-        <a class='btn btn-ghost normal-case text-xl'>daisyUI</a>
+        <Link to='/' class='btn btn-ghost normal-case text-xl'>Metal House</Link>
       </div>
       <div class='navbar-center hidden lg:flex'>
         <ul class='menu menu-horizontal p-0'>

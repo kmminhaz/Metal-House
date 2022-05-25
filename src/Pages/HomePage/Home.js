@@ -1,9 +1,15 @@
 import React from 'react';
+import Banner from './Banner/Banner';
+import Tools from './Tools/Tools';
 
 const Home = () => {
     return (
       <div>
-        <h5>This is Home Page</h5>
+        <Banner></Banner>
+        <br /> <br /> <br /> <br />
+        <Tools></Tools>
+        <br /> <br /> <br /> <br />
+        
       </div>
     );
 };
