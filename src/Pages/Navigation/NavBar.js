@@ -11,7 +11,7 @@ const NavBar = () => {
         <Link to='/blogs'>Blogs</Link>
       </li>
       <li>
-        <Link to='/Dashboard'>Dashboard</Link>
+        <Link to='/dashboard'>Dashboard</Link>
       </li>
     </>
   );
@@ -40,6 +40,9 @@ const NavBar = () => {
             className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
           >
             {navItems}
+            <Link to='/login' className='lg:btn btn btn-sm'>
+              Login
+            </Link>
           </ul>
         </div>
         <Link to='/' className='btn btn-ghost normal-case text-xl'>
@@ -50,9 +53,41 @@ const NavBar = () => {
         <ul className='menu menu-horizontal p-0'>{navItems}</ul>
       </div>
       <div className='navbar-end'>
-        <Link to='/login' className='btn'>
-          Login
-        </Link>
+        <div className='dropdown'>
+          <label
+            tabindex='1'
+            for='dashboardSidebar'
+            className='btn btn-ghost lg:hidden'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              class='h-5 w-5'
+              viewBox='0 0 20 20'
+              fill='currentColor'
+            >
+              <path d='M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z' />
+            </svg>
+            {/* <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-5 w-5'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M4 6h16M4 12h8m-8 6h16'
+              />
+            </svg> */}
+          </label>
+        </div>
+        <div className='lg:block hidden'>
+          <Link to='/login' className='lg:btn btn btn-sm'>
+            Login
+          </Link>
+        </div>
       </div>
     </div>
   );
