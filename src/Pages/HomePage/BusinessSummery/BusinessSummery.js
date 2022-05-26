@@ -19,7 +19,7 @@ const BusinessSummery = () => {
               </h4>
             </div>
             <div>
-              <h4 className='text-4xl p-3 text-white'>32+</h4>
+              <h4 className='text-4xl p-3 text-white'>30+</h4>
               <p className='text-lg text-white'>Tools</p>
             </div>
           </div>

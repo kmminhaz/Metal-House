@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import bolts from "../../../Assets/Images/bolts-nuts.jpg";
 
 const Tools = () => {
@@ -30,7 +31,7 @@ const Tools = () => {
                   <div class='badge badge-outline'>1 Ton</div>
                 </h5>
                 <div class='card-actions justify-end my-3'>
-                  <button class='btn btn-primary'>Purchase</button>
+                  <Link to='/purchase' class='btn btn-primary'>Purchase</Link>
                 </div>
               </div>
             </div>
@@ -57,7 +58,7 @@ const Tools = () => {
                   <div class='badge badge-outline'>1 Ton</div>
                 </h5>
                 <div class='card-actions justify-end my-3'>
-                  <button class='btn btn-primary'>Purchase</button>
+                  <Link to='/purchase' class='btn btn-primary'>Purchase</Link>
                 </div>
               </div>
             </div>
@@ -84,7 +85,7 @@ const Tools = () => {
                   <div class='badge badge-outline'>1 Ton</div>
                 </h5>
                 <div class='card-actions justify-end my-3'>
-                  <button class='btn btn-primary'>Purchase</button>
+                  <Link to='/purchase' class='btn btn-primary'>Purchase</Link>
                 </div>
               </div>
             </div>
