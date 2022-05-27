@@ -1,0 +1,114 @@
+[
+  {
+    "name": "NUTS & BOLTS",
+    "img": "https://i.ibb.co/gWtZRbf/nut-and-bolt.jpg",
+    "description": "Bolts can come in a wide range of different sizes and shapes, but the basic production process generally remains the same. It starts with cold forging steel wire into the right shape, followed by heat treating to improve strength and surface treating to improve durability, before being packed for shipment.",
+    "price": 2,
+    "available_quantity": 873000,
+    "minimum_order_quantity": 10000
+  },
+  {
+    "name": "Wranch",
+    "img": "https://i.ibb.co/bPZJLzn/wrench.jpg",
+    "description": "Drop forged and heat-treated carbon steel construction with a corrosion-resistant satin chrome plated finish. Precision-machined slide jaw and worm gear allows for exact fastener fit and smooth adjustment. Quick fit jaw opening guide with permanent laser-etched size markings in 1/16 in. and 1mm increments. Meets or exceeds ANSI standards. 1-3/4 in. jaw capacity.",
+    "price": 12,
+    "available_quantity": 68300,
+    "minimum_order_quantity": 1000
+  },
+  {
+    "name": "Pillars",
+    "img": "https://i.ibb.co/gJhRrbq/pilers-Set.jpg",
+    "description": "IRWIN Tools 2078714 Mini Pliers Set, 8-Piece With Case, is made with durable chrome vanadium and the induction hardened cutting edge will stay sharp, longer. The spring loaded jaw gripping less tiring and the ProTouch Grips are non-slip, making them comfortable with more control and less hand fatigue. This is a wide variety set Vise-Grip mini pliers and wrenches and the comes with a convenient storage case. The adjustable wrenches meet or exceed ANSI specifications. Contains: 5 Bent Nose, 5-1/4 Flat Nose, 5-1/4 Long Nose, 4-1/4 End Nipper, 4-1/2 Standard Diagonal, 4-1/2 Flush-Cut Diagonal, 4-3/4 Linemans, and 5-1/2 Needle Nose.",
+    "price": 15,
+    "available_quantity": 64000,
+    "minimum_order_quantity": 1000
+  },
+  {
+    "name": "Hammer",
+    "img": "https://i.ibb.co/BqMXTLM/hammer.jpg",
+    "description": "Crafted with the user in mind using high quality materials and world class craftsmanship, quality assured and made to withstand even the toughest jobs. Designed with the user in mind and fit to match the needs in the shop, at home or in the field - Proven and Tested for durabilty and function in real world conditions.",
+    "price": 62,
+    "available_quantity": 14000,
+    "minimum_order_quantity": 500
+  },
+  {
+    "name": "Clamp",
+    "img": "https://i.ibb.co/6bt2Xp5/clamp.jpg",
+    "description": "This workers metal spring clamp is ideal for use at the shop or home. Designed to make your hardware projects easier & efficient, this clamp is meant for your tool collection. Work for hours with easy handling and usage. Our PVC Rubber tips and handle makes the clamp user friendly. We deliver strong hold and pressure grip to prevent slippage during use.",
+    "price": 64,
+    "available_quantity": 18100,
+    "minimum_order_quantity": 500
+  },
+  {
+    "name": "Metal Hand",
+    "img": "https://i.ibb.co/gJ9csv5/Metal-Hand.jpg",
+    "description": "Metal Hand Seamer – For Bending and Flattening Sheet Metal. The ABN 3” Inch Offset Metal Hand Seamer easily bends and flattens sheet metal and non-ferrous metals; The offset design lets you get to hard-to-reach places. Strengthened rivets give you secure, adjustable pressure and operating range so you can accommodate for any metal-working project HVAC, duct-work, or otherwise. Dual-layer, non-slip pitted handles. Both clamping surfaces are designed with gaps for versatility and best results. 3-inch jaw width; 1-1/4-inch seam depth. ",
+    "price": 54,
+    "available_quantity": 13000,
+    "minimum_order_quantity": 500
+  },
+  {
+    "name": "Metal Cutter",
+    "img": "https://i.ibb.co/TKqvYBb/Mettal-Cutter.jpg",
+    "description": "ONBOARD SPANNER WRENCH: Simplify your disc replacements. This spanner is stored on the grinder, so you don’t have to worry about losing it when you’re switching discs out for multiple applications. Whatever angle you’re attacking your job from, you’ll be able to get the optimal leverage with the help of the onboard plastic handle that adjusts as you need it. A rubber overmold covering the grip keeps up the friction between the tool and your hand, allowing for precise work in slippery environments. If you need to adjust the depth or angle of your cuts to suit different materials, you can do so with the push of a button. ",
+    "price": 43,
+    "available_quantity": 31000,
+    "minimum_order_quantity": 1000
+  },
+  {
+    "name": "Hand Notcher",
+    "img": "https://i.ibb.co/0Z464dT/Hand-Notcher.jpg",
+    "description": "The N2R notcher punches a big 1 inch (25.4 mm) deep notch in common 24 to 30 (0.71-0.41 mm) gauge galvanized sheet metal quickly and easily. Folding and fabricating metal ductwork is easier than ever with the full 1 inch clearance that the N2R single operation notcher provides. Precision-ground steel upper jaw and hardened stampened steel components feature rust-resistant black oxide and nickel plated finishes. Ergonomic Redline handles with unique one-hand operation latch offer maximum compound leverage performance and natural fit and feel.",
+    "price": 56,
+    "available_quantity": 21900,
+    "minimum_order_quantity": 500
+  },
+  {
+    "name": "Metal Cutting Gears",
+    "img": "https://i.ibb.co/BfMFwNM/Metal-Cutting-Gears.jpg",
+    "description": "Pack of 18 Set: 2 x T80 gears, 2 x T60 gears, 2 x T50 gears, 2 x T45 gears, 2 x T40 gears, 2 x T30 gears, 1 x T35 gears, 1 x T25 gears, 1 x T20 gears, 2 x Metal change gear set, 1 x timing belt pulley. High-Quality Metal Material: Made of high quality metal, rust-proof treatment on the surface of gears for durability and long time use. Precision Polished: The gears are milled by pricing milling skill to ensure high precision. A mounting wrench is provided that it is easy for your instant installation. 18pcs/set CJ0618 gears is compatible with mini lathe, metal cutting machine.",
+    "price": 82,
+    "available_quantity": 5300,
+    "minimum_order_quantity": 200
+  },
+  {
+    "name": "Angle Clamping Tool",
+    "img": "https://i.ibb.co/L1xnDpw/Angle-Clamping-Tool.jpg",
+    "description": "The Strong Hand Tools Jointmaster 90Deg Angle Joining Tool Is Ideal For Quick Hold And Release Of Metal, Wood Or Synthetic Materials. Length (In. ): 8, Throat Depth (In. ): 3, Finish Type: Chrome, Opening (In. ): 4, Product Style: Angle Joining Tool, Degree Of Angle ( Deg ): 90, Pieces (Qty. ): 1, Material: Steel.",
+    "price": 31,
+    "available_quantity": 19000,
+    "minimum_order_quantity": 1000
+  },
+  {
+    "name": "Drill Matchin",
+    "img": "https://i.ibb.co/mvZn3X9/drill-matchine.png",
+    "description": "drill set makes everything easier than before, which is a powerful all-around helper for matching your desires, perfect for professional and DIYers! 3/8’’ keyless chuck provides an automatic spindle lock that enables one-hand changing with great accessory compatibility. The Forward/Reverse switch allows you to either screw or replaces/remove bits for your purposes. Built-in a strong magnet that can hold the bits anytime.",
+    "price": 74,
+    "available_quantity": 8800,
+    "minimum_order_quantity": 500
+  },
+  {
+    "name": "Drill bits",
+    "img": "https://i.ibb.co/ZhFpXLR/drill-bits.jpg",
+    "description": "Classic 5% Cobalt M35 High Speed Steel construction with Titanium Coating for proven capability and durability. The hardness is 5% Cobalt drill bits Rock wall Hardness Level HRC 65-66. For use on metal, wood & plastics, Stainless Steel, Not For Use On Concrete / Masonry. Perfect match for workshop or service vehicles. 135 Tip & Twist Design: Increases cutting speed with self-centering and prevents walking, clears chips and particles faster.",
+    "price": 22,
+    "available_quantity": 21500,
+    "minimum_order_quantity": 1000
+  },
+  {
+    "name": "Angle Grinder Tool",
+    "img": "https://i.ibb.co/yRjf76z/Angle-Grinder-Tool.jpg",
+    "description": "The Black & Decker BDEG400 4-1/2 6 Amp Angle Grinder is ideal for sharpening, cutting, grinding, removing rust and surface preparation. This grinder features a metal gear case for durability and longer life. It offers a 3-position side handle that provides added comfort and control for use with various materials and angles. It also has a spindle lock for easy accessory changes. Operates at 10,000 rpm, with a spindle size range of 5/8 - 11 . Includes: (1) 4-1/2 Small angle grinder, (1) Metal grinding wheel, (1) Spanner wrench.",
+    "price": 29,
+    "available_quantity": 11030,
+    "minimum_order_quantity": 1000
+  },
+  {
+    "name": "Metal Marking Gage",
+    "img": "https://i.ibb.co/gMPxrcM/Metal-Marking-Gage.png",
+    "description": "With the General Tools and Instruments 820 Metal Marking Gage, Single Bar you can easily trace the edge of a flat surface for ripping and cutting. The steel bar features an engraved, graduated ruler for making accurate measurements. The needle point scriber easily marks wood, plastic, hardboard and other materials. The needle point is ultra fine for extreme precision marking. Nickel plated, this gage is constructed for consistent use and durability.",
+    "price": 17,
+    "available_quantity": 51100,
+    "minimum_order_quantity": 1000
+  }
+]

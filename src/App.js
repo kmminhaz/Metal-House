@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import "react-toastify/dist/ReactToastify.css";
 import Footer from './Footer/Footer';
 import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/HomePage/Home';
@@ -28,7 +29,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Registration />}></Route>
         <Route
-          path='/purchase'
+          path='/purchase/:id'
           element={
             <RequiredAuth>
               <Purchase />

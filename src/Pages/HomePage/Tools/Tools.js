@@ -1,98 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import bolts from "../../../Assets/Images/bolts-nuts.jpg";
 
 const Tools = () => {
-    return (
-      <div>
-        <h1 className='text-5xl font-bold mb-16'> Tools </h1>
-        <div className='container mx-auto flex justify-center'>
-          <div className='grid lg:grid-cols-3 grid-cols-1 gap-16'>
-            <div class='card lg:w-96 w-80 bg-base-300 shadow-xl'>
+  const [tools, setTools] = useState([]);
+
+  useEffect(() => {
+    fetch("https://limitless-scrubland-96637.herokuapp.com/tools")
+      .then((res) => res.json())
+      .then((data) => setTools(data));
+  }, []);
+
+  return (
+    <div>
+      <h1 className='text-5xl font-bold mb-16'> Tools </h1>
+      <div className='container mx-auto flex justify-center'>
+        <div className='grid lg:grid-cols-3 grid-cols-1 gap-16'>
+          {tools.map((tool) => (
+            <div className='card lg:w-96 w-80 bg-base-300 shadow-xl'>
               <figure>
-                <img src={bolts} alt='Shoes' />
+                <img src={tool.img} alt='Shoes' className='w-full h-56' />
               </figure>
-              <div class='card-body border-white text-left'>
-                <h2 class='card-title'>NUTS & BOLTS</h2>
+              <div className='card-body border-white text-left'>
+                <h2 className='card-title uppercase'>{tool.name}</h2>
                 <p className='text-left'>
-                  Bolts can come in a wide range of different sizes and shapes,
-                  but the basic production process generally remains the same.
-                  It starts with cold forging steel wire into ...
+                  {tool.description.slice(0, 200)} . . .
                 </p>
                 <h5 className='text-xl font-bold'>
-                  Price : <div class='badge badge-outline'>0.50 $</div>
+                  Price : <div className='badge badge-outline'>{tool.price} $</div>
                 </h5>
                 <h5 className='text-xl font-bold'>
-                  Available Quantity: {" "}
-                  <div class='badge badge-outline'>60 Ton</div>
+                  Available Quantity:{" "}
+                  <div className='badge badge-outline'>
+                    {tool.available_quantity}
+                  </div>
+                  <span className='text-sm px-1'> Pices </span>
                 </h5>
                 <h5 className='text-xl font-bold'>
-                  Order minimum of :{" "}
-                  <div class='badge badge-outline'>1 Ton</div>
+                  Order minimum :{" "}
+                  <div className='badge badge-outline'>
+                    {tool.minimum_order_quantity}
+                  </div>
+                  <span className='text-sm px-1'> Pices </span>
                 </h5>
-                <div class='card-actions justify-end my-3'>
-                  <Link to='/purchase' class='btn btn-primary'>Purchase</Link>
+                <div className='card-actions justify-end my-3'>
+                  <Link to={`/purchase/${tool._id}`} className='btn btn-primary'>
+                    Purchase
+                  </Link>
                 </div>
               </div>
             </div>
-            <div class='card lg:w-96 w-80 bg-base-300 shadow-xl'>
-              <figure>
-                <img src={bolts} alt='Shoes' />
-              </figure>
-              <div class='card-body border-white text-left'>
-                <h2 class='card-title'>NUTS & BOLTS</h2>
-                <p className='text-left'>
-                  Bolts can come in a wide range of different sizes and shapes,
-                  but the basic production process generally remains the same.
-                  It starts with cold forging steel wire into ...
-                </p>
-                <h5 className='text-xl font-bold'>
-                  Price : <div class='badge badge-outline'>0.50 $</div>
-                </h5>
-                <h5 className='text-xl font-bold'>
-                  Available Quantity: {" "}
-                  <div class='badge badge-outline'>60 Ton</div>
-                </h5>
-                <h5 className='text-xl font-bold'>
-                  Order minimum of :{" "}
-                  <div class='badge badge-outline'>1 Ton</div>
-                </h5>
-                <div class='card-actions justify-end my-3'>
-                  <Link to='/purchase' class='btn btn-primary'>Purchase</Link>
-                </div>
-              </div>
-            </div>
-            <div class='card lg:w-96 w-80 bg-base-300 shadow-xl'>
-              <figure>
-                <img src={bolts} alt='Shoes' />
-              </figure>
-              <div class='card-body border-white text-left'>
-                <h2 class='card-title'>NUTS & BOLTS</h2>
-                <p className='text-left'>
-                  Bolts can come in a wide range of different sizes and shapes,
-                  but the basic production process generally remains the same.
-                  It starts with cold forging steel wire into ...
-                </p>
-                <h5 className='text-xl font-bold'>
-                  Price : <div class='badge badge-outline'>0.50 $</div>
-                </h5>
-                <h5 className='text-xl font-bold'>
-                  Available Quantity: {" "}
-                  <div class='badge badge-outline'>60 Ton</div>
-                </h5>
-                <h5 className='text-xl font-bold'>
-                  Order minimum of :{" "}
-                  <div class='badge badge-outline'>1 Ton</div>
-                </h5>
-                <div class='card-actions justify-end my-3'>
-                  <Link to='/purchase' class='btn btn-primary'>Purchase</Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Tools;
