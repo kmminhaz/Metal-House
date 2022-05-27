@@ -6,15 +6,15 @@ const Purchase = () => {
   return (
     <div className='w-10/12 mx-auto'>
       <div className='lg:w-1/2 mx-auto my-10'>
-        <div className='text-center lg:w-1/2 mx-auto py-2 bg-base-300 rounded-2xl'>
+        {/* <div className='text-center lg:w-1/2 mx-auto py-2 bg-base-300 rounded-2xl'>
           <h4 className='text-xl font-bold pb-2 text-white'>
             {" "}
             Your Cradentials{" "}
           </h4>
           <p>kmminhaj.khan@gmail.com</p>
           <p>K. M. Minhaz Uddin</p>
-        </div>
-        <div class='divider font-bold'>ITEM DETAILS</div>
+        </div> */}
+        <div class='divider font-bold text-xl'>ITEM DETAILS</div>
         <div className='p-10 text-left bg-base-300 rounded-lg'>
           <img src={nutebolts} alt='' className='lg:w-1/2 mx-auto rounded-lg' />
           <h3 className='text-2xl text-center py-2'>Nutes & Bolts</h3>
@@ -28,7 +28,7 @@ const Purchase = () => {
             Price : <div class='badge badge-outline'>0.50 $</div>
           </h5>
           <h5 className='text-xl font-bold'>
-            Available Quantity: <div class='badge badge-outline'>60 Ton</div>
+            Available Quantity : <div class='badge badge-outline text-xl p-2'>60000</div>
           </h5>
           <h5 className='text-xl font-bold'>
             Order Minimum : <div class='badge badge-outline'>1 Ton</div>
@@ -43,7 +43,7 @@ const Purchase = () => {
             <div className='card-body'>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text'>Phone</span>
+                  <span className='label-text'>Your Phone Number</span>
                 </label>
                 <input
                   type='text'
@@ -53,7 +53,7 @@ const Purchase = () => {
               </div>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text'>Address</span>
+                  <span className='label-text'>Shipment Address</span>
                 </label>
                 <input
                   type='text'
@@ -63,13 +63,13 @@ const Purchase = () => {
               </div>
               <div className='form-control'>
                 <label className='label'>
-                  <span className='label-text'>Order Quantity in [ Ton ]</span>
+                  <span className='label-text'>Order Quantity</span>
                 </label>
                 <input
                   type='text'
                   placeholder='Order Quantity'
                   className='input input-bordered'
-                  value='1'
+                  value='1000'
                 />
               </div>
               <div className='form-control mt-6'>

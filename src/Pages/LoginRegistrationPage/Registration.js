@@ -29,8 +29,8 @@ const Registration = () => {
 
   const onSubmit = async (data) => {
     const {name, email, password} = data
-    await createUserWithEmailAndPassword(email, password);
-    await updateProfile( {displayName: name})
+    await await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
   };
 
   return (
