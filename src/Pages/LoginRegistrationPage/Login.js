@@ -1,13 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {useSignInWithGoogle} from "react-firebase-hooks/auth"
+import auth from "../../firebase.init";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  let redirectFrom = location?.state?.from?.pathname || "/";
+
+  if (user) {
+    navigate(redirectFrom);
+  }
+
   return (
     <div className='w-10/12 mx-auto'>
       <div>
-        <h1 className='font-bold text-5xl pt-10'>LOG IN</h1>
-        {/* <p className='text-xl mt-2 text-success'> Hello Minhaz! </p> */}
-        {/* <p className='text-xl mt-2 text-error'> Hello Minhaz! </p> */}
+        <h1 className='font-bold text-4xl pt-10'>LOGIN</h1>
+        {user && <p className='text-xl mt-2 text-success'> Hello Minhaz! </p>}
+        {error && <p className='text-xl mt-2 text-error'> Who are you! </p>}
       </div>
       <div className='card lg:w-2/6 mt-5 my-10 mx-auto shadow-2xl bg-base-200'>
         <div className='card-body'>
@@ -54,9 +66,15 @@ const Login = () => {
             </div>
           </div>
           <div class='divider'>OR</div>
-          <h2>Login with Google</h2>
+          <h2>Login with</h2>
           <div className='form-control mt-6'>
-            <button className='btn text-error font-bold text-2xl'>Google</button>
+            <button
+              className='btn text-error font-bold text-2xl'
+              onClick={() => signInWithGoogle()}
+            >
+              {" "}
+              Google{" "}
+            </button>
           </div>
         </div>
       </div>

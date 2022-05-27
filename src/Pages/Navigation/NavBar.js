@@ -1,7 +1,13 @@
+import { getAuth, signOut } from "firebase/auth";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import app from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const NavBar = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   const navItems = (
     <>
       <li>
@@ -15,6 +21,16 @@ const NavBar = () => {
       </li>
     </>
   );
+
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className='navbar bg-base-100'>
       <div className='navbar-start'>
@@ -84,9 +100,15 @@ const NavBar = () => {
           </label>
         </div>
         <div className='lg:block hidden'>
-          <Link to='/login' className='lg:btn btn btn-sm'>
-            Login
-          </Link>
+          {user ? (
+            <button onClick={signOutUser} className='lg:btn btn btn-sm'>
+              LogOut
+            </button>
+          ) : (
+            <Link to='/login' className='lg:btn btn btn-sm'>
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
