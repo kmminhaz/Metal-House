@@ -1,20 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { async } from "@firebase/util";
 
 const Registration = () => {
+  const location = useLocation();
+  const navigate = useNavigate()
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, errorProfile] = useUpdateProfile(auth);
 
-  // const register = (event) => {
-  //   event.preventDefault();
-  //   const name = event.target.name.value;
-  //   const email = event.target.email.value;
-  //   const password = event.target.password.value;
-  //   createUserWithEmailAndPassword(email, password)
-  // }
+  let redirectFrom = location?.state?.from?.pathname || "/";
+
+  if(user){
+    navigate(redirectFrom);
+  }
 
   const {
     register,
@@ -22,17 +27,25 @@ const Registration = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    const {email, password} = data
-    console.log(email, password);
+  const onSubmit = async (data) => {
+    const {name, email, password} = data
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile( {displayName: name})
   };
 
   return (
     <div className='w-10/12 mx-auto'>
       <div>
         <h1 className='font-bold text-4xl pt-5 pb-5'>REGISTER</h1>
-        {/* <p className='text-xl mt-2 text-success'> Hello Minhaz! </p>
-          <p className='text-xl mt-2 text-error'> Hello Minhaz! </p> */}
+        {user && (
+          <p className='text-xl mt-2 text-success'> Hello {user.email}! </p>
+        )}
+        {(error || errorProfile) && (
+          <p className='text-xl mt-2 text-error'>
+            {" "}
+            {error?.message || errorProfile?.message}
+          </p>
+        )}
       </div>
       <div className='card lg:w-2/6 mt-5 my-10 mx-auto shadow-2xl bg-base-200'>
         <div className='card-body'>

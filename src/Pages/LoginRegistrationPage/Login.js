@@ -13,7 +13,7 @@ const Login = () => {
 
   let redirectFrom = location?.state?.from?.pathname || "/";
 
-  if (user) {
+  if (user || userPassword) {
     navigate(redirectFrom);
   }
 

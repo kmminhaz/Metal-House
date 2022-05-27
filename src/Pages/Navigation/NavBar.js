@@ -8,6 +8,37 @@ import auth from "../../firebase.init";
 const NavBar = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const loginButton = (
+    <>
+      {user ? (
+        <div className='lg:flex'>
+          <div className='px-2 py-1 text-left rounded-lg my-3 lg:mx-3 lg:my-0'>
+            <p>{user?.displayName}</p>
+            <p>{user?.email}</p>
+          </div>
+          <button onClick={signOutUser} className='lg:btn btn btn-sm'>
+            LogOut
+          </button>
+        </div>
+      ) : (
+        <Link to='/login' className='lg:btn btn btn-sm'>
+          Login
+        </Link>
+      )}
+    </>
+  );
+
   const navItems = (
     <>
       <li>
@@ -22,15 +53,6 @@ const NavBar = () => {
     </>
   );
 
-  const signOutUser = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("login");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   return (
     <div className='navbar bg-base-100'>
       <div className='navbar-start'>
@@ -56,9 +78,7 @@ const NavBar = () => {
             className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
           >
             {navItems}
-            <Link to='/login' className='lg:btn btn btn-sm'>
-              Login
-            </Link>
+            {loginButton}
           </ul>
         </div>
         <Link to='/' className='btn btn-ghost normal-case text-xl'>
@@ -100,15 +120,8 @@ const NavBar = () => {
           </label>
         </div>
         <div className='lg:block hidden'>
-          {user ? (
-            <button onClick={signOutUser} className='lg:btn btn btn-sm'>
-              LogOut
-            </button>
-          ) : (
-            <Link to='/login' className='lg:btn btn btn-sm'>
-              Login
-            </Link>
-          )}
+
+          {loginButton}
         </div>
       </div>
     </div>
