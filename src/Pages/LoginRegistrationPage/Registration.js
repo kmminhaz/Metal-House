@@ -1,80 +1,133 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import auth from '../../firebase.init';
+import React from "react";
+import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 
 const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-    return (
-      <div className='w-10/12 mx-auto'>
-        <div>
-          <h1 className='font-bold text-5xl pt-5 pb-5'>REGISTER</h1>
-          {/* <p className='text-xl mt-2 text-success'> Hello Minhaz! </p>
+
+  // const register = (event) => {
+  //   event.preventDefault();
+  //   const name = event.target.name.value;
+  //   const email = event.target.email.value;
+  //   const password = event.target.password.value;
+  //   createUserWithEmailAndPassword(email, password)
+  // }
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const {email, password} = data
+    console.log(email, password);
+  };
+
+  return (
+    <div className='w-10/12 mx-auto'>
+      <div>
+        <h1 className='font-bold text-4xl pt-5 pb-5'>REGISTER</h1>
+        {/* <p className='text-xl mt-2 text-success'> Hello Minhaz! </p>
           <p className='text-xl mt-2 text-error'> Hello Minhaz! </p> */}
-        </div>
-        <div className='card lg:w-2/6 mt-5 my-10 mx-auto shadow-2xl bg-base-200'>
-          <div className='card-body'>
-            <form>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Name</span>
-                </label>
-                <input
-                  type='text'
-                  placeholder='name'
-                  className='input input-bordered'
-                />
-              </div>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Phone</span>
-                </label>
-                <input
-                  type='text'
-                  placeholder='phone'
-                  className='input input-bordered'
-                />
-              </div>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Email</span>
-                </label>
-                <input
-                  type='email'
-                  placeholder='email'
-                  className='input input-bordered'
-                />
-              </div>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Password</span>
-                </label>
-                <input
-                  type='text'
-                  placeholder='password'
-                  className='input input-bordered'
-                />
-              </div>
-              <div className='form-control mt-6'>
-                <button type='submit' className='btn btn-primary text-xl'>Register</button>
-              </div>
-            </form>
-            <div className='modal-footer mx-5 pt-3 mb-1'>
-              <p className='font-small flex justify-end items-center label'>
-                <span className='pr-2'>Already have an account? </span>
-                <Link
-                  to='/login'
-                  className='font-bold label-text-alt link link-hover text-sm text-white'
-                >
-                  Login
-                </Link>
-              </p>
+      </div>
+      <div className='card lg:w-2/6 mt-5 my-10 mx-auto shadow-2xl bg-base-200'>
+        <div className='card-body'>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='form-control'>
+              <label className='label'>
+                <span className='label-text'>Name</span>
+              </label>
+              <input
+                {...register("name", {
+                  required: true,
+                })}
+                type='text'
+                placeholder='Name'
+                className='input input-bordered w-full'
+              />
+              <label className='text-error'>
+                {errors.name && "Name is Required"}
+              </label>
             </div>
+            <div className=''>
+              <label class='label'>
+                <span class='label-text pt-3'>Email</span>
+              </label>
+              <input
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email Address is Required",
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: "Email Address Pattern is Wrong",
+                  },
+                })}
+                type='email'
+                placeholder='Email'
+                className='input input-bordered w-full'
+              />
+              <label className='text-error'>
+                {errors.email?.type === "required" && (
+                  <span>{errors.email.message}</span>
+                )}
+                {errors.email?.type === "pattern" && errors.email.message}
+              </label>
+            </div>
+
+            <div className=''>
+              <label class='label'>
+                <span class='label-text pt-3'>Password</span>
+              </label>
+              <input
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Password is required",
+                  },
+                  pattern: {
+                    value: /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/,
+                    message:
+                      "Password Should Contain at least one digit, one lower case, one upper case And 8 characters",
+                  },
+                })}
+                type='password'
+                placeholder='Password'
+                class='input input-bordered w-full'
+              />
+              <label className='text-error'>
+                {errors.password?.type === "required" && (
+                  <span>{errors.password.message}</span>
+                )}
+                {errors.password?.type === "pattern" && errors.password.message}
+              </label>
+            </div>
+            <div className='form-control mt-6'>
+              <button type='submit' className='btn btn-primary text-xl'>
+                Register
+              </button>
+            </div>
+          </form>
+          <div className='modal-footer mx-5 pt-3 mb-1'>
+            <p className='font-small flex justify-end items-center label'>
+              <span className='pr-2'>Already have an account? </span>
+              <Link
+                to='/login'
+                className='font-bold label-text-alt link link-hover text-sm text-white'
+              >
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Registration;
