@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
+import { toast } from "react-toastify";
 
 const ManageOrder = () => {
   const [deleteOrder, setDeleteOrder] = useState(null);
@@ -15,7 +16,9 @@ const ManageOrder = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/orders`).then((res) => res.json())
+    fetch(`https://limitless-scrubland-96637.herokuapp.com/orders`).then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {
@@ -23,7 +26,20 @@ const ManageOrder = () => {
   }
 
   const handleApprovedProduct = (id) => {
-    // fetch
+    fetch(`http://localhost:5000/shippedOrder/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ orderStatus: "shipped" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data){
+          refetch();
+          toast.success("The Product Shipment Successfull !");
+        }
+      });
   };
 
   return (
@@ -67,7 +83,7 @@ const ManageOrder = () => {
                   <label
                     for='delete-confirm-modal'
                     className={`btn btn-sm btn-error ${
-                      order.orderStatus !== "pending"
+                      order.orderStatus === "unpaid"
                         ? "btn-active"
                         : "btn-disabled"
                     } font-bold mr-2`}
