@@ -1,9 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DeleteConfirmModal from "../Operations/DeleteConfirmModal";
+import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading/Loading";
+import {toast} from "react-toastify"
 
 const MakeAdmin = () => {
-  const [deleteOrder, setDeleteOrder] = useState(null);
+  const {
+    data: profiles,
+    isLoading,
+    refetch,
+  } = useQuery("profiles", () =>
+    fetch(`http://localhost:5000/profiles`).then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
+  const handleMakeAdmin = (id) => {
+    fetch(`http://localhost:5000/makeAdmin/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ access: "Admin" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          toast.success("A New Admin Has been Set");
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
       <div className='overflow-x-auto my-5'>
@@ -17,41 +48,34 @@ const MakeAdmin = () => {
               <th>Price</th>
               <th>Order Amount</th>
               <th>Order Status</th>
-              <th>Options</th>
+              <th>Access Level</th>
             </tr>
           </thead>
           <tbody className='text-white'>
-            {/* <!-- row 2 --> */}
-            <tr className='hover text-center'>
-              <th>1</th>
-              <td>Nuts & Bolts</td>
-              <td>60000</td>
-              <td>0.50 $</td>
-              <td>10000</td>
-              <td>Pending</td>
-              <td>
-                <Link
-                  to='/dashboard/payment'
-                  for='delete-confirm-modal'
-                  className='btn btn-sm btn-primary font-bold mr-2'
-                  //   disabled='disabled'
-                >
-                  Payment
-                </Link>
-                <label
-                  for='delete-confirm-modal'
-                  className='btn btn-sm btn-error font-bold'
-                  //   disabled='disabled'
-                  onClick={() => setDeleteOrder(1)}
-                >
-                  Delete
-                </label>
-              </td>
-            </tr>
+            {profiles.map((profile, index) => (
+              <tr className='hover text-center'>
+                <th>{index + 1}</th>
+                <td>{profile.name}</td>
+                <td>{profile.email}</td>
+                <td>{profile.education}</td>
+                <td>{profile.linkedInProfile}</td>
+                <td>{profile.phoneNumber}</td>
+                <td>
+                  <label
+                    for='delete-confirm-modal'
+                    className={`btn btn-sm btn-primary font-bold ${
+                      profile.access === "user" ? "btn-active" : "btn-disabled"
+                    }`}
+                    onClick={() => {handleMakeAdmin(profile._id)}}
+                  >
+                    Make Admin
+                  </label>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      {deleteOrder && <DeleteConfirmModal></DeleteConfirmModal>}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle, useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ const Login = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, userPassword, loadingPassword, errorPassword] =
     useSignInWithEmailAndPassword(auth);
+
+  const [token] = useToken(user)
 
   let redirectFrom = location?.state?.from?.pathname || "/";
 

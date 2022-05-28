@@ -50,10 +50,10 @@ const ManageOrder = () => {
           <thead>
             <tr className='text-center'>
               <th>#</th>
-              <th>Name</th>
-              <th>transaction ID</th>
-              <th>Price</th>
-              <th>Order Amount</th>
+              <th>User Email</th>
+              <th>User Phone</th>
+              <th>Product Name</th>
+              <th>Order Quantity</th>
               <th>Order Status</th>
               <th>Options</th>
             </tr>
@@ -87,7 +87,7 @@ const ManageOrder = () => {
                         ? "btn-active"
                         : "btn-disabled"
                     } font-bold mr-2`}
-                    onClick={() => setDeleteOrder(1)}
+                    onClick={() => setDeleteOrder(order)}
                   >
                     Delete
                   </label>
@@ -97,7 +97,12 @@ const ManageOrder = () => {
           </tbody>
         </table>
       </div>
-      {deleteOrder && <DeleteConfirmModal></DeleteConfirmModal>}
+      {deleteOrder && (
+        <DeleteConfirmModal
+          order={deleteOrder}
+          refetch={refetch}
+        ></DeleteConfirmModal>
+      )}
     </div>
   );
 };

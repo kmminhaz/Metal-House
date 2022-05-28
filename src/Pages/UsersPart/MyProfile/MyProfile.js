@@ -44,9 +44,10 @@ const MyProfile = () => {
     const myUpdatedProfile = {
       name: user.displayName,
       email: user.email,
+      access: "user",
+      phoneNumber: phoneNumber,
       education: education,
       location: location,
-      phoneNumber: phoneNumber,
       linkedInProfile: linkedInProfile,
     };
 

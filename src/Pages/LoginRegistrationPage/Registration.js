@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { async } from "@firebase/util";
+import useToken from "../../Hooks/useToken";
 
 const Registration = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, errorProfile] = useUpdateProfile(auth);
+  const [token] = useToken(user);
 
   let redirectFrom = location?.state?.from?.pathname || "/";
 
@@ -31,6 +33,7 @@ const Registration = () => {
     const {name, email, password} = data
     await await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
+
   };
 
   return (
