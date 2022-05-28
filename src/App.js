@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import "react-toastify/dist/ReactToastify.css";
+import {ToastContainer} from "react-toastify"
 import Footer from './Footer/Footer';
 import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/HomePage/Home';
@@ -60,6 +61,7 @@ function App() {
           ></Route>
         </Route>
       </Routes>
+      <ToastContainer></ToastContainer>
       <Footer></Footer>
     </div>
   );

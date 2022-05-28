@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
@@ -89,7 +89,6 @@ const Purchase = () => {
   };
   return (
     <div className='w-10/12 mx-auto'>
-      <ToastContainer></ToastContainer>
       <div className='lg:w-1/2 mx-auto my-10'>
         {/* <div className='text-center lg:w-1/2 mx-auto py-2 bg-base-300 rounded-2xl'>
           <h4 className='text-xl font-bold pb-2 text-white'>

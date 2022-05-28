@@ -3,18 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import DeleteConfirmModal from "../Operations/DeleteConfirmModal";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading/Loading";
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
   const [deleteOrder, setDeleteOrder] = useState(null);
-  const [myOrders, setMyOrders] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/myOrders?userEmail=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setMyOrders(data));
-  }, []);
+  const { data: myOrders, isLoading, refetch } = useQuery("myOrders", () =>
+    fetch(
+      `https://limitless-scrubland-96637.herokuapp.com/myOrders?userEmail=${user.email}`
+    ).then((res) => res.json())
+  );
+
+  if(isLoading){
+    return <Loading></Loading>
+  }
 
   const goToPaymentPage = (id) => {
     navigate(`/dashboard/payment/${id}`);
@@ -91,7 +96,10 @@ const MyOrders = () => {
         </table>
       </div>
       {deleteOrder && (
-        <DeleteConfirmModal order={deleteOrder}></DeleteConfirmModal>
+        <DeleteConfirmModal
+          order={deleteOrder}
+          refetch={refetch}
+        ></DeleteConfirmModal>
       )}
     </div>
   );
