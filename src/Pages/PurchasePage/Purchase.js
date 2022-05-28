@@ -97,7 +97,7 @@ const Purchase = () => {
           </h4>
           <p>kmminhaj.khan@gmail.com</p>
           <p>K. M. Minhaz Uddin</p>
-        </div> */}
+      </div> */}
         <div class='divider font-bold text-xl'>ITEM DETAILS</div>
         <div className='p-10 text-left bg-base-300 rounded-lg'>
           <img src={tool.img} alt='' className='lg:w-1/2 mx-auto rounded-lg' />

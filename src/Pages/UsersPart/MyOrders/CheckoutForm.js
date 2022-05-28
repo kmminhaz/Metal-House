@@ -20,14 +20,11 @@ const CheckoutForm = ({ paymentOrder }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch(
-      "https://limitless-scrubland-96637.herokuapp.com/create-payment-intent",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderPayable }),
-      }
-    )
+    fetch("http://localhost:5000/create-payment-intent", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ orderPayable }),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
