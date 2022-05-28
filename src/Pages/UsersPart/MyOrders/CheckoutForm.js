@@ -9,12 +9,12 @@ import {
 import auth from "../../../firebase.init";
 
 const CheckoutForm = ({ paymentOrder }) => {
-    console.log(paymentOrder);
+  console.log(paymentOrder);
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const [cardSuccess, setCardSuccess] = useState("");
-  const { orderPayable, userEmail } = paymentOrder;
+  const { _id, orderPayable, userEmail } = paymentOrder;
   const [user] = useAuthState(auth);
 
   const [clientSecret, setClientSecret] = useState("");
@@ -31,11 +31,15 @@ const CheckoutForm = ({ paymentOrder }) => {
           setClientSecret(data?.clientSecret);
         }
       });
-      console.log(orderPayable, clientSecret);
+    console.log(orderPayable, clientSecret);
   }, [orderPayable]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    setCardError("");
+    setCardSuccess("");
+
     if (!stripe || !elements) {
       return;
     }
@@ -73,8 +77,17 @@ const CheckoutForm = ({ paymentOrder }) => {
       setCardError(intentError?.message);
     } else {
       setCardError("");
-      setCardSuccess('Success! Your payment is Completeted!');
-      console.log(paymentIntent);
+      setCardSuccess("Success! Your payment is Completeted!");
+      const transectionId = paymentIntent.id;
+      fetch(`http://localhost:5000/order/${_id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ transectionId }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
     }
   };
   return (

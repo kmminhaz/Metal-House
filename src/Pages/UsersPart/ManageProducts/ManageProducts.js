@@ -55,7 +55,7 @@ const ManageProducts = () => {
                     for='delete-product-modal'
                     className='btn btn-sm btn-error font-bold'
                     //   disabled='disabled'
-                    onClick={() => setDeleteProduct(tools)}
+                    onClick={() => setDeleteProduct(tool)}
                   >
                     Delete
                   </label>

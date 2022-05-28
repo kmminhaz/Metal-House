@@ -3,10 +3,11 @@ import { toast } from "react-toastify";
 
 const DeleteProduct = ({product, refetch}) => {
     const {name, _id} = product;
+    console.log(product);
 
     const handleDeleteProduct = async (id) => {
       await fetch(
-        `https://limitless-scrubland-96637.herokuapp.com/tools/${id}`,
+        `https://limitless-scrubland-96637.herokuapp.com/tool/${id}`,
         {
           method: "DELETE",
         }

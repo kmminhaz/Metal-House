@@ -45,7 +45,7 @@ const Purchase = () => {
       shipmentAddress: data.address,
       orderQuantity: order,
       orderPayable: payable,
-      orderStatus: "PENDING",
+      orderStatus: "unpaid",
       transactionId: "",
     };
     
