@@ -1,9 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import DeleteConfirmModal from "../Operations/DeleteConfirmModal";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 const MyOrders = () => {
+  const [user] = useAuthState(auth);
   const [deleteOrder, setDeleteOrder] = useState(null);
+  const [myOrders, setMyOrders] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/myOrders?userEmail=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setMyOrders(data));
+  }, []);
+
+  const goToPaymentPage = (id) => {
+    navigate(`/dashboard/payment/${id}`);
+  };
   return (
     <div>
       <div className='overflow-x-auto my-5'>
@@ -12,46 +27,72 @@ const MyOrders = () => {
           <thead>
             <tr className='text-center'>
               <th>#</th>
-              <th>Name</th>
-              <th>transaction ID</th>
-              <th>Price</th>
-              <th>Order Amount</th>
+              <th>Product Id</th>
+              <th>Order Quantity</th>
+              <th>Order Payable</th>
               <th>Order Status</th>
+              <th>Transaction Id</th>
               <th>Options</th>
             </tr>
           </thead>
           <tbody className='text-white'>
             {/* <!-- row 2 --> */}
-            <tr className='hover text-center'>
-              <th>1</th>
-              <td>Nuts & Bolts</td>
-              <td>60000</td>
-              <td>0.50 $</td>
-              <td>10000</td>
-              <td>Pending</td>
-              <td>
-                <Link
-                  to='/dashboard/payment'
-                  for='delete-confirm-modal'
-                  className='btn btn-sm btn-primary font-bold mr-2'
-                  //   disabled='disabled'
-                >
-                  Payment
-                </Link>
-                <label
-                  for='delete-confirm-modal'
-                  className='btn btn-sm btn-error font-bold'
-                  //   disabled='disabled'
-                  onClick={() => setDeleteOrder(1)}
-                >
-                  Delete
-                </label>
-              </td>
-            </tr>
+            {myOrders.map((myOrder) => (
+              <tr className='hover text-center'>
+                <th>1</th>
+                <td>{myOrder.productId}</td>
+                <td>{myOrder.orderQuantity}</td>
+                <td>{myOrder.orderPayable} $</td>
+                <td>{myOrder.orderStatus}</td>
+                <td>{myOrder.transactionId}</td>
+                <td>
+                  {myOrder.transactionId ? (
+                    <div>
+                      <Link
+                        to='/dashboard/payment'
+                        for='delete-confirm-modal'
+                        className='btn btn-sm btn-primary font-bold mr-2'
+                        disabled='disabled'
+                      >
+                        Payment
+                      </Link>
+                      <label
+                        for='delete-confirm-modal'
+                        className='btn btn-sm btn-error font-bold'
+                        disabled='disabled'
+                        onClick={() => setDeleteOrder(1)}
+                      >
+                        Delete
+                      </label>
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        onClick={() => {
+                          goToPaymentPage(myOrder._id);
+                        }}
+                        className='btn btn-sm btn-primary font-bold mr-2'
+                      >
+                        Payment
+                      </button>
+                      <label
+                        for='delete-confirm-modal'
+                        className='btn btn-sm btn-error font-bold'
+                        onClick={() => setDeleteOrder(myOrder)}
+                      >
+                        Delete
+                      </label>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      {deleteOrder && <DeleteConfirmModal></DeleteConfirmModal>}
+      {deleteOrder && (
+        <DeleteConfirmModal order={deleteOrder}></DeleteConfirmModal>
+      )}
     </div>
   );
 };

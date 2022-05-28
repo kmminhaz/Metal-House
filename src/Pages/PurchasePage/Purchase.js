@@ -36,15 +36,19 @@ const Purchase = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const payable = parseInt(order) * parseInt(tool.price);
     const placeOrder = {
-      orderId: id,
-      userName: user.displayName,
+      productId: id,
+      productName: tool.name,
       userEmail: user.email,
       userPhone: data.phone,
       shipmentAddress: data.address,
       orderQuantity: order,
+      orderPayable: payable,
+      orderStatus: "PENDING",
+      transactionId: "",
     };
-
+    
     await fetch("https://limitless-scrubland-96637.herokuapp.com/orders", {
       method: "POST",
       headers: {
@@ -135,12 +139,12 @@ const Purchase = () => {
                 </div>
                 <div className='form-control'>
                   <label className='label'>
-                    <span className='label-text'>Name</span>
+                    <span className='label-text'>Product Name</span>
                   </label>
                   <input
                     type='text'
                     className='input w-full text-lg text-white'
-                    value={user.displayName}
+                    value={tool.name}
                     readOnly
                   />
                 </div>
