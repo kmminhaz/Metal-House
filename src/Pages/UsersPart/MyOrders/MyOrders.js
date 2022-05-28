@@ -42,9 +42,9 @@ const MyOrders = () => {
           </thead>
           <tbody className='text-white'>
             {/* <!-- row 2 --> */}
-            {myOrders.map((myOrder) => (
+            {myOrders.map((myOrder, index) => (
               <tr className='hover text-center'>
-                <th>1</th>
+                <th>{index+1}</th>
                 <td>{myOrder.productId}</td>
                 <td>{myOrder.orderQuantity}</td>
                 <td>{myOrder.orderPayable} $</td>

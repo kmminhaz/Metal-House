@@ -79,7 +79,7 @@ const CheckoutForm = ({ paymentOrder }) => {
       setCardError("");
       setCardSuccess("Success! Your payment is Completeted!");
       const transectionId = paymentIntent.id;
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://limitless-scrubland-96637.herokuapp.com/order/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
