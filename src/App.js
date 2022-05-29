@@ -20,6 +20,7 @@ import MyOrders from './Pages/UsersPart/MyOrders/MyOrders';
 import Payment from './Pages/UsersPart/MyOrders/Payment';
 import MyProfile from './Pages/UsersPart/MyProfile/MyProfile';
 import NotFound from './Pages/NotFound/NotFound';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
             element={<ManageProducts />}
           ></Route>
         </Route>
+        <Route path='myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
       <ToastContainer></ToastContainer>

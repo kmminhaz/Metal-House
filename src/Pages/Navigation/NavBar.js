@@ -49,6 +49,9 @@ const NavBar = () => {
       <li>
         <Link to='/dashboard'>Dashboard</Link>
       </li>
+      <li>
+        <Link to='/myportfolio'>My Portfolio</Link>
+      </li>
     </>
   );
 
