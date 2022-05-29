@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DeleteConfirmModal from "../Operations/DeleteConfirmModal";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading/Loading";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const MakeAdmin = () => {
   const {
@@ -11,7 +11,9 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery("profiles", () =>
-    fetch(`http://localhost:5000/profiles`).then((res) => res.json())
+    fetch(`https://limitless-scrubland-96637.herokuapp.com/profiles`).then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {
@@ -19,7 +21,7 @@ const MakeAdmin = () => {
   }
 
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/makeAdmin/${id}`, {
+    fetch(`https://limitless-scrubland-96637.herokuapp.com/makeAdmin/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -66,7 +68,9 @@ const MakeAdmin = () => {
                     className={`btn btn-sm btn-primary font-bold ${
                       profile.access === "user" ? "btn-active" : "btn-disabled"
                     }`}
-                    onClick={() => {handleMakeAdmin(profile._id)}}
+                    onClick={() => {
+                      handleMakeAdmin(profile._id);
+                    }}
                   >
                     Make Admin
                   </label>

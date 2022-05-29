@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Capabilities from "../../../Assets/Images/Our_Capabilities.jpg";
 
 const OurCapabilities = () => {
@@ -21,7 +22,7 @@ const OurCapabilities = () => {
                 With over four decades of experience in producing suppling and
                 manufacturing
               </p>
-              <button class='btn btn-primary'>Go To Tools</button>
+              <Link to="/" class='btn btn-primary'>Order Now</Link>
             </div>
           </div>
         </div>

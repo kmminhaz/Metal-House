@@ -25,7 +25,7 @@ const AddReview = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ review }),
+      body: JSON.stringify( review ),
     })
       .then((res) => res.json())
       .then((data) => {
