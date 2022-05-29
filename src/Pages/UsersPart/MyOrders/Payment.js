@@ -36,23 +36,23 @@ const Payment = () => {
     <div className='w-10/12 mx-auto lg:mx-0'>
       <div className='lg:w-1/2 mx-auto my-10'>
         <div className='p-10 text-left bg-base-300 rounded-lg'>
-          <p>Welcome {user.displayName}</p>
+          <p>Welcome {user?.displayName}</p>
           <h3 className='text-xl py-2'>
             Order for, <br />
             <span className='font-bold text-2xl ml-5 text-white'>
-              {paymentOrder.productName}
+              {paymentOrder?.productName}
             </span>
           </h3>
           <div className='mt-3 bg-base-100 p-5 rounded-xl'>
             <h5 className='font-bold py-1'>
               Your Phone :{" "}
-              <span className='lg:text-xl'> {paymentOrder.userPhone} </span>
+              <span className='lg:text-xl'> {paymentOrder?.userPhone} </span>
             </h5>
             <h5 className='font-bold py-1'>
               Shipment Address :{" "}
               <span className='lg:text-xl'>
                 {" "}
-                {paymentOrder.shipmentAddress}{" "}
+                {paymentOrder?.shipmentAddress}{" "}
               </span>
             </h5>
             <h5 className='font-bold py-1'>
@@ -60,7 +60,7 @@ const Payment = () => {
             </h5>
             <h5 className='font-bold p-2 bg-base-300 mt-3 rounded-2xl text-center'>
               Total Payable Amount : <br />
-              <span className='lg:text-xl'>{paymentOrder.orderPayable} $</span>
+              <span className='lg:text-xl'>{paymentOrder?.orderPayable} $</span>
             </h5>
           </div>
         </div>

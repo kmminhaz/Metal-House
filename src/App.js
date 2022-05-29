@@ -21,6 +21,7 @@ import Payment from './Pages/UsersPart/MyOrders/Payment';
 import MyProfile from './Pages/UsersPart/MyProfile/MyProfile';
 import NotFound from './Pages/NotFound/NotFound';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import RequiredAdmin from './Pages/Shared/RequireAdmin/RequireAdmin';
 
 function App() {
   return (
@@ -51,15 +52,37 @@ function App() {
           <Route path='/dashboard/addreviews' element={<AddReview />}></Route>
           <Route path='/dashboard/myorder' element={<MyOrders />}></Route>
           <Route path='/dashboard/payment/:id' element={<Payment />}></Route>
-          <Route path='/dashboard/addproduct' element={<AddProduct />}></Route>
-          <Route path='/dashboard/makeadmin' element={<MakeAdmin />}></Route>
+          <Route
+            path='/dashboard/addproduct'
+            element={
+              <RequiredAdmin>
+                <AddProduct />
+              </RequiredAdmin>
+            }
+          ></Route>
+          <Route
+            path='/dashboard/makeadmin'
+            element={
+              <RequiredAdmin>
+                <MakeAdmin />
+              </RequiredAdmin>
+            }
+          ></Route>
           <Route
             path='/dashboard/manageorder'
-            element={<ManageOrder />}
+            element={
+              <RequiredAdmin>
+                <ManageOrder />
+              </RequiredAdmin>
+            }
           ></Route>
           <Route
             path='/dashboard/manageproducts'
-            element={<ManageProducts />}
+            element={
+              <RequiredAdmin>
+                <ManageProducts />
+              </RequiredAdmin>
+            }
           ></Route>
         </Route>
         <Route path='myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>

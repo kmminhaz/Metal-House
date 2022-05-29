@@ -19,7 +19,7 @@ const useToken = (user) => {
       };
       console.log(currentUser);
       fetch(
-        `https://limitless-scrubland-96637.herokuapp.com/myProfile/${email}`,
+        `https://limitless-scrubland-96637.herokuapp.com/profile/${email}`,
         {
           method: "PUT",
           headers: {
@@ -29,7 +29,12 @@ const useToken = (user) => {
         }
       )
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          console.log(data);
+          const accessToken = data.token;
+          localStorage.setItem("accessToken", accessToken);
+          setToken(accessToken);
+        });
     }
   }, [user]);
   return [token];

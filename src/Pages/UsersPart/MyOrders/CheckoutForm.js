@@ -9,7 +9,7 @@ import {
 import auth from "../../../firebase.init";
 
 const CheckoutForm = ({ paymentOrder }) => {
-  console.log(paymentOrder);
+    console.log(paymentOrder);
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -20,19 +20,26 @@ const CheckoutForm = ({ paymentOrder }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ orderPayable }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.clientSecret) {
-          setClientSecret(data?.clientSecret);
+    (async () => {
+      await fetch(
+        "https://limitless-scrubland-96637.herokuapp.com/create-payment-intent",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ orderPayable }),
         }
-      });
-    console.log(orderPayable, clientSecret);
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.clientSecret) {
+            setClientSecret(data?.clientSecret);
+          }
+        });
+    })();
+    // console.log(orderPayable, clientSecret);
   }, [orderPayable]);
+
+  console.log(stripe);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -87,7 +94,9 @@ const CheckoutForm = ({ paymentOrder }) => {
         body: JSON.stringify({ transectionId }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+            
+        });
     }
   };
   return (

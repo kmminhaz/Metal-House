@@ -3,16 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle, useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
-import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, user, loading, errorGmail] =
+    useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, userPassword, loadingPassword, errorPassword] =
     useSignInWithEmailAndPassword(auth);
-
-  const [token] = useToken(user)
 
   let redirectFrom = location?.state?.from?.pathname || "/";
 
@@ -35,8 +33,11 @@ const Login = () => {
     <div className='w-10/12 mx-auto'>
       <div>
         <h1 className='font-bold text-4xl pt-5'>LOGIN</h1>
-        {userPassword && <p className='text-xl mt-2 text-success'> Hello {user.email}! </p>}
-        {errorPassword && <p className='text-xl mt-2 text-error'> Email or Password is Wrong </p>}
+        {(errorPassword || errorGmail) && (
+          <p className='text-xl mt-2 text-error'>
+            {errorPassword?.message} || {errorGmail?.message}
+          </p>
+        )}
       </div>
       <div className='card lg:w-2/6 mt-5 my-10 mx-auto shadow-2xl bg-base-200'>
         <div className='card-body'>

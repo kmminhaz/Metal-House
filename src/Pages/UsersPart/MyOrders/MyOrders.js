@@ -24,6 +24,7 @@ const MyOrders = () => {
   const goToPaymentPage = (id) => {
     navigate(`/dashboard/payment/${id}`);
   };
+
   return (
     <div>
       <div className='overflow-x-auto my-5'>

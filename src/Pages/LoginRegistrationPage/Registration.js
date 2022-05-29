@@ -8,6 +8,7 @@ import {
 import { useForm } from "react-hook-form";
 import { async } from "@firebase/util";
 import useToken from "../../Hooks/useToken";
+import Loading from "../Shared/Loading/Loading";
 
 const Registration = () => {
   const location = useLocation();
@@ -30,11 +31,14 @@ const Registration = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const {name, email, password} = data
-    await await createUserWithEmailAndPassword(email, password);
+    const {name, email, password} = data;
+    await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
-
   };
+
+  if (loading || updating) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div className='w-10/12 mx-auto'>
