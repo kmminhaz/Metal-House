@@ -1,5 +1,4 @@
 # Metal-House
-A project with React, Tailwind, Javascript, Node.js, Express js
 
 Live Site Link : 
 Open [https://metal-house.web.app]
