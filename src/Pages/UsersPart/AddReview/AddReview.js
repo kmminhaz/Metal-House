@@ -20,12 +20,12 @@ const AddReview = () => {
       reviewerOpinion: data.opinion,
       rating: data.rating,
     };
-    await fetch("https://limitless-scrubland-96637.herokuapp.com/myReview", {
+    await fetch("https://metal-house-server.vercel.app/myReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify( review ),
+      body: JSON.stringify(review),
     })
       .then((res) => res.json())
       .then((data) => {

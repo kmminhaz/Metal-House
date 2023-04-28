@@ -6,7 +6,7 @@ const Tools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("https://limitless-scrubland-96637.herokuapp.com/tools")
+    fetch("https://metal-house-server.vercel.app/tools")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);
@@ -27,7 +27,8 @@ const Tools = () => {
                   {tool.description.slice(0, 200)} . . .
                 </p>
                 <h5 className='text-xl font-bold'>
-                  Price : <div className='badge badge-outline'>{tool.price} $</div>
+                  Price :{" "}
+                  <div className='badge badge-outline'>{tool.price} $</div>
                 </h5>
                 <h5 className='text-xl font-bold'>
                   Available Quantity:{" "}
@@ -44,7 +45,10 @@ const Tools = () => {
                   <span className='text-sm px-1'> Pices </span>
                 </h5>
                 <div className='card-actions justify-end my-3'>
-                  <Link to={`/purchase/${tool._id}`} className='btn btn-primary'>
+                  <Link
+                    to={`/purchase/${tool._id}`}
+                    className='btn btn-primary'
+                  >
                     Purchase
                   </Link>
                 </div>

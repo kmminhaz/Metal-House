@@ -12,9 +12,7 @@ const MyProfile = () => {
   const [myProfile, setMyProfile] = useState(null);
 
   useEffect(() => {
-    fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/myProfile/${user.email}`
-    )
+    fetch(`https://metal-house-server.vercel.app/myProfile/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setEducation(data?.education);
@@ -50,22 +48,17 @@ const MyProfile = () => {
       linkedInProfile: linkedInProfile,
     };
 
-    fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/myProfile/${user.email}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(myUpdatedProfile),
-      }
-    )
+    fetch(`https://metal-house-server.vercel.app/myProfile/${user.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(myUpdatedProfile),
+    })
       .then((res) => res.json())
       .then((result) => {
         if (result) {
-          fetch(
-            `https://limitless-scrubland-96637.herokuapp.com/myProfile/${user.email}`
-          )
+          fetch(`https://metal-house-server.vercel.app/myProfile/${user.email}`)
             .then((res) => res.json())
             .then((data) => {
               setEducation(data?.education);

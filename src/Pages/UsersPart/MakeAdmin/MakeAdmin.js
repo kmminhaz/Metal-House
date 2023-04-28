@@ -11,8 +11,8 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery("profiles", () =>
-    fetch(`https://limitless-scrubland-96637.herokuapp.com/profiles`).then(
-      (res) => res.json()
+    fetch(`https://metal-house-server.vercel.app/profiles`).then((res) =>
+      res.json()
     )
   );
 
@@ -21,7 +21,7 @@ const MakeAdmin = () => {
   }
 
   const handleMakeAdmin = (id) => {
-    fetch(`https://limitless-scrubland-96637.herokuapp.com/makeAdmin/${id}`, {
+    fetch(`https://metal-house-server.vercel.app/makeAdmin/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

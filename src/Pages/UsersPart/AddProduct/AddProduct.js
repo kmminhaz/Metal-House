@@ -10,7 +10,7 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    await fetch("https://limitless-scrubland-96637.herokuapp.com/tools", {
+    await fetch("https://metal-house-server.vercel.app/tools", {
       method: "POST",
       headers: {
         "content-type": "application/json",

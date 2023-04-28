@@ -13,8 +13,8 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("tools", () =>
-    fetch(`https://limitless-scrubland-96637.herokuapp.com/tools`).then(
-      (res) => res.json()
+    fetch(`https://metal-house-server.vercel.app/tools`).then((res) =>
+      res.json()
     )
   );
 

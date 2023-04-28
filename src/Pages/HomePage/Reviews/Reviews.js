@@ -4,7 +4,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://limitless-scrubland-96637.herokuapp.com/reviews")
+    fetch("https://metal-house-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -12,10 +12,7 @@ const Reviews = () => {
   return (
     <div>
       <h1 className='text-5xl font-bold mb-10'>Reviews</h1>
-      <p className='mb-2 lg:block '>
-        {" "}
-        Swipe left and to see more reviews{" "}
-      </p>
+      <p className='mb-2 lg:block '> Swipe left and to see more reviews </p>
       <div className='lg:w-10/12 mx-auto'>
         <div className='lg:mx-5'>
           <div class='lg:carousel lg:carousel-center lg:w-full h-lg p-4 space-x-4 rounded-box'>

@@ -12,7 +12,7 @@ const RequiredAdmin = ({ children }) => {
 
   const { data: profile, isLoading } = useQuery("profile", () =>
     fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/myProfile/${user?.email}`
+      `https://metal-house-server.vercel.app/myProfile/${user?.email}`
     ).then((res) => res.json())
   );
 
@@ -26,8 +26,6 @@ const RequiredAdmin = ({ children }) => {
         <Navigate to='/login' state={{ from: currentLocation }} replace />
       </div>
     );
-  } else {
-    toast.error("Authorization Faild!!.");
   }
 
   return children;

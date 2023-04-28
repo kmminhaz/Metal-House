@@ -7,9 +7,7 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [accessLevel, setAccessLevel] = useState("");
 
-  fetch(
-    `https://limitless-scrubland-96637.herokuapp.com/myProfile/${user.email}`
-  )
+  fetch(`https://metal-house-server.vercel.app/myProfile/${user.email}`)
     .then((res) => res.json())
     .then((data) => {
       setAccessLevel(data.access);

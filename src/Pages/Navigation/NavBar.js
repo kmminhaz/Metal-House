@@ -121,10 +121,7 @@ const NavBar = () => {
             </svg> */}
           </label>
         </div>
-        <div className='lg:block hidden'>
-
-          {loginButton}
-        </div>
+        <div className='lg:block hidden'>{loginButton}</div>
       </div>
     </div>
   );

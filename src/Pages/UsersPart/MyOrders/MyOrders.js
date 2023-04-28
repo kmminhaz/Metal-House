@@ -11,14 +11,18 @@ const MyOrders = () => {
   const [deleteOrder, setDeleteOrder] = useState(null);
   const navigate = useNavigate();
 
-  const { data: myOrders, isLoading, refetch } = useQuery("myOrders", () =>
+  const {
+    data: myOrders,
+    isLoading,
+    refetch,
+  } = useQuery("myOrders", () =>
     fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/myOrders?userEmail=${user.email}`
+      `https://metal-house-server.vercel.app/myOrders?userEmail=${user.email}`
     ).then((res) => res.json())
   );
 
-  if(isLoading){
-    return <Loading></Loading>
+  if (isLoading) {
+    return <Loading></Loading>;
   }
 
   const goToPaymentPage = (id) => {
@@ -45,7 +49,7 @@ const MyOrders = () => {
             {/* <!-- row 2 --> */}
             {myOrders.map((myOrder, index) => (
               <tr className='hover text-center'>
-                <th>{index+1}</th>
+                <th>{index + 1}</th>
                 <td>{myOrder.productId}</td>
                 <td>{myOrder.orderQuantity}</td>
                 <td>{myOrder.orderPayable} $</td>

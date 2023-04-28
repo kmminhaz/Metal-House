@@ -13,7 +13,7 @@ const Purchase = () => {
   const [orderError, setOrderError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://limitless-scrubland-96637.herokuapp.com/tools/${id}`)
+    fetch(`https://metal-house-server.vercel.app/tools/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTool(data);
@@ -22,7 +22,7 @@ const Purchase = () => {
   }, []);
 
   // const refatch = async () => {
-  //   await fetch(`https://limitless-scrubland-96637.herokuapp.com/tools/${id}`)
+  //   await fetch(`https://metal-house-server.vercel.app/tools/${id}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setTool(data);
@@ -48,8 +48,8 @@ const Purchase = () => {
       orderStatus: "unpaid",
       transactionId: "",
     };
-    
-    await fetch("https://limitless-scrubland-96637.herokuapp.com/orders", {
+
+    await fetch("https://metal-house-server.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -18,16 +18,13 @@ const useToken = (user) => {
         linkedInProfile: "",
       };
       console.log(currentUser);
-      fetch(
-        `https://limitless-scrubland-96637.herokuapp.com/profile/${email}`,
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        }
-      )
+      fetch(`https://metal-house-server.vercel.app/profile/${email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(currentUser),
+      })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

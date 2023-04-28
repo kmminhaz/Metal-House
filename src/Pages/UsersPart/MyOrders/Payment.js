@@ -3,9 +3,9 @@ import nutebolts from "../../../Assets/Images/bolts-nuts.jpg";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../../Shared/Loading/Loading";
-import {useAuthState} from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
-import {loadStripe} from '@stripe/stripe-js'
+import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
   Elements,
@@ -20,18 +20,18 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
 
   const { data: paymentOrder, isLoading } = useQuery("paymentOrder", () =>
-    fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/myOrders/${id}`
-    ).then((res) => res.json())
+    fetch(`https://metal-house-server.vercel.app/myOrders/${id}`).then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
-  
+
   return (
     <div className='w-10/12 mx-auto lg:mx-0'>
       <div className='lg:w-1/2 mx-auto my-10'>

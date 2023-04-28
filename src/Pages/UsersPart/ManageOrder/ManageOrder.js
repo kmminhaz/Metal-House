@@ -16,8 +16,8 @@ const ManageOrder = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`https://limitless-scrubland-96637.herokuapp.com/orders`).then(
-      (res) => res.json()
+    fetch(`https://metal-house-server.vercel.app/orders`).then((res) =>
+      res.json()
     )
   );
 
@@ -26,16 +26,13 @@ const ManageOrder = () => {
   }
 
   const handleApprovedProduct = (id) => {
-    fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/shippedOrder/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ orderStatus: "shipped" }),
-      }
-    )
+    fetch(`https://metal-house-server.vercel.app/shippedOrder/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ orderStatus: "shipped" }),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data) {

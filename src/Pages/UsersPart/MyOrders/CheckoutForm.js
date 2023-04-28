@@ -9,7 +9,7 @@ import {
 import auth from "../../../firebase.init";
 
 const CheckoutForm = ({ paymentOrder }) => {
-    console.log(paymentOrder);
+  console.log(paymentOrder);
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -22,7 +22,7 @@ const CheckoutForm = ({ paymentOrder }) => {
   useEffect(() => {
     (async () => {
       await fetch(
-        "https://limitless-scrubland-96637.herokuapp.com/create-payment-intent",
+        "https://metal-house-server.vercel.app/create-payment-intent",
         {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -86,7 +86,7 @@ const CheckoutForm = ({ paymentOrder }) => {
       setCardError("");
       setCardSuccess("Success! Your payment is Completeted!");
       const transectionId = paymentIntent.id;
-      fetch(`https://limitless-scrubland-96637.herokuapp.com/order/${_id}`, {
+      fetch(`https://metal-house-server.vercel.app/order/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -94,9 +94,7 @@ const CheckoutForm = ({ paymentOrder }) => {
         body: JSON.stringify({ transectionId }),
       })
         .then((res) => res.json())
-        .then((data) => {
-            
-        });
+        .then((data) => {});
     }
   };
   return (

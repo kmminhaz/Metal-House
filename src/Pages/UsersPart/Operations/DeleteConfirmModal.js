@@ -5,12 +5,9 @@ const DeleteConfirmModal = ({ order, refetch }) => {
   const { productName, _id } = order;
 
   const handleDeleteOrder = async (id) => {
-    await fetch(
-      `https://limitless-scrubland-96637.herokuapp.com/myOrders/${id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    await fetch(`https://metal-house-server.vercel.app/myOrders/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((result) => {
         if (result.acknowledged === true) {
