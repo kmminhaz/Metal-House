@@ -13,7 +13,7 @@ const Purchase = () => {
   const [orderError, setOrderError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://metal-house-server.vercel.app/tools/${id}`)
+    fetch(`https://metal-house-server-side.onrender.com/tools/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTool(data);
@@ -22,7 +22,7 @@ const Purchase = () => {
   }, []);
 
   // const refatch = async () => {
-  //   await fetch(`https://metal-house-server.vercel.app/tools/${id}`)
+  //   await fetch(`https://metal-house-server-side.onrender.com/tools/${id}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setTool(data);
@@ -49,7 +49,7 @@ const Purchase = () => {
       transactionId: "",
     };
 
-    await fetch("https://metal-house-server.vercel.app/orders", {
+    await fetch("https://metal-house-server-side.onrender.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -17,7 +17,7 @@ const MyOrders = () => {
     refetch,
   } = useQuery("myOrders", () =>
     fetch(
-      `https://metal-house-server.vercel.app/myOrders?userEmail=${user.email}`
+      `https://metal-house-server-side.onrender.com/myOrders?userEmail=${user.email}`
     ).then((res) => res.json())
   );
 

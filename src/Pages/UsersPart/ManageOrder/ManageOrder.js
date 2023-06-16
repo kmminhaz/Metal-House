@@ -16,7 +16,7 @@ const ManageOrder = () => {
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`https://metal-house-server.vercel.app/orders`).then((res) =>
+    fetch(`https://metal-house-server-side.onrender.com/orders`).then((res) =>
       res.json()
     )
   );
@@ -26,7 +26,7 @@ const ManageOrder = () => {
   }
 
   const handleApprovedProduct = (id) => {
-    fetch(`https://metal-house-server.vercel.app/shippedOrder/${id}`, {
+    fetch(`https://metal-house-server-side.onrender.com/shippedOrder/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -23,8 +23,8 @@ const Payment = () => {
   const [user] = useAuthState(auth);
 
   const { data: paymentOrder, isLoading } = useQuery("paymentOrder", () =>
-    fetch(`https://metal-house-server.vercel.app/myOrders/${id}`).then((res) =>
-      res.json()
+    fetch(`https://metal-house-server-side.onrender.com/myOrders/${id}`).then(
+      (res) => res.json()
     )
   );
 

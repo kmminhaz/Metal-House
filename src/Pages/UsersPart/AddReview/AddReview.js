@@ -20,7 +20,7 @@ const AddReview = () => {
       reviewerOpinion: data.opinion,
       rating: data.rating,
     };
-    await fetch("https://metal-house-server.vercel.app/myReview", {
+    await fetch("https://metal-house-server-side.onrender.com/myReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",

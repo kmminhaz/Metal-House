@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery("profiles", () =>
-    fetch(`https://metal-house-server.vercel.app/profiles`).then((res) =>
+    fetch(`https://metal-house-server-side.onrender.com/profiles`).then((res) =>
       res.json()
     )
   );
@@ -21,7 +21,7 @@ const MakeAdmin = () => {
   }
 
   const handleMakeAdmin = (id) => {
-    fetch(`https://metal-house-server.vercel.app/makeAdmin/${id}`, {
+    fetch(`https://metal-house-server-side.onrender.com/makeAdmin/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

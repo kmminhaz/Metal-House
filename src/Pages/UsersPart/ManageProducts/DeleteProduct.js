@@ -6,7 +6,7 @@ const DeleteProduct = ({ product, refetch }) => {
   console.log(product);
 
   const handleDeleteProduct = async (id) => {
-    await fetch(`https://metal-house-server.vercel.app/tool/${id}`, {
+    await fetch(`https://metal-house-server-side.onrender.com/tool/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

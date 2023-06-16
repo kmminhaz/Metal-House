@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [accessLevel, setAccessLevel] = useState("");
 
-  fetch(`https://metal-house-server.vercel.app/myProfile/${user.email}`)
+  fetch(`https://metal-house-server-side.onrender.com/myProfile/${user.email}`)
     .then((res) => res.json())
     .then((data) => {
       setAccessLevel(data.access);

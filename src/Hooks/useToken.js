@@ -18,7 +18,7 @@ const useToken = (user) => {
         linkedInProfile: "",
       };
       console.log(currentUser);
-      fetch(`https://metal-house-server.vercel.app/profile/${email}`, {
+      fetch(`https://metal-house-server-side.onrender.com/profile/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

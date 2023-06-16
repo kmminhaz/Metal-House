@@ -13,7 +13,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("tools", () =>
-    fetch(`https://metal-house-server.vercel.app/tools`).then((res) =>
+    fetch(`https://metal-house-server-side.onrender.com/tools`).then((res) =>
       res.json()
     )
   );

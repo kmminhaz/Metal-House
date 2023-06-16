@@ -12,7 +12,7 @@ const RequiredAdmin = ({ children }) => {
 
   const { data: profile, isLoading } = useQuery("profile", () =>
     fetch(
-      `https://metal-house-server.vercel.app/myProfile/${user?.email}`
+      `https://metal-house-server-side.onrender.com/myProfile/${user?.email}`
     ).then((res) => res.json())
   );
 

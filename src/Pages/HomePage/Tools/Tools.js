@@ -6,7 +6,7 @@ const Tools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("https://metal-house-server.vercel.app/tools")
+    fetch("https://metal-house-server-side.onrender.com/tools")
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, []);

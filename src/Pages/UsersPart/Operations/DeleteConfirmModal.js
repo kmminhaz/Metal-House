@@ -5,7 +5,7 @@ const DeleteConfirmModal = ({ order, refetch }) => {
   const { productName, _id } = order;
 
   const handleDeleteOrder = async (id) => {
-    await fetch(`https://metal-house-server.vercel.app/myOrders/${id}`, {
+    await fetch(`https://metal-house-server-side.onrender.com/myOrders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

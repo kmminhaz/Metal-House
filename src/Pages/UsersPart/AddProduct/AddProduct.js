@@ -10,7 +10,7 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    await fetch("https://metal-house-server.vercel.app/tools", {
+    await fetch("https://metal-house-server-side.onrender.com/tools", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -22,7 +22,7 @@ const CheckoutForm = ({ paymentOrder }) => {
   useEffect(() => {
     (async () => {
       await fetch(
-        "https://metal-house-server.vercel.app/create-payment-intent",
+        "https://metal-house-server-side.onrender.com/create-payment-intent",
         {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -86,7 +86,7 @@ const CheckoutForm = ({ paymentOrder }) => {
       setCardError("");
       setCardSuccess("Success! Your payment is Completeted!");
       const transectionId = paymentIntent.id;
-      fetch(`https://metal-house-server.vercel.app/order/${_id}`, {
+      fetch(`https://metal-house-server-side.onrender.com/order/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
